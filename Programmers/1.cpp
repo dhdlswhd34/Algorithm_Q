@@ -14,10 +14,9 @@ int solution(vector<vector<int>> board,vector <int> moves) {
     
     for(int i = 0; i < moves.size(); i++)
     {           
-        for( ;  0 == (board[moves[i]-1].empty()) ;)
+        for(int j = 0 ; j < board.size() ; j++)
         {
-            temp = board[moves[i]-1].back();
-            board[moves[i]-1].pop_back();
+            temp = board[j][moves[i]-1];
             if(temp)
             {
                 if(temp == bk.back())
@@ -28,9 +27,9 @@ int solution(vector<vector<int>> board,vector <int> moves) {
                 else
                 {
                     bk.push_back(temp);
+                    
                 }
-                
-                cout << bk;
+                board[j][moves[i]-1] = 0;
                 break;
             }
         }    
