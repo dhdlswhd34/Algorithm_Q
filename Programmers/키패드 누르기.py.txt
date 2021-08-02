@@ -1,0 +1,49 @@
+
+def key_len(v,k):
+    if k==0:
+        k = 11
+    if (k%3) == 1:
+        if (k+1) == v:    
+            return 1
+        else:
+            return (abs(v-(k+1))/3)+1
+    elif (k%3) == 0:
+        if (k-1) == v:    
+            return 1
+        else:
+            return (abs(v-(k-1))/3)+1
+    elif (k%3) == 2:
+        return abs(v-k)/3
+    else:  
+        return 0
+
+
+def solution(numbers, hand):
+    answer = ''
+    l_loc = 10
+    r_loc = 12
+    for value in numbers:
+        if value == 0:
+            value = 11
+        if (value % 3) == 1:
+            answer += 'L'
+            l_loc = value   
+        elif (value % 3) == 2:
+            if  key_len(value,l_loc) > key_len(value,r_loc) :
+                answer += 'R'
+                r_loc = value
+            elif key_len(value,l_loc) == key_len(value,r_loc) :
+                if (hand == "right"):
+                    answer += 'R'
+                    r_loc = value    
+                else:
+                    answer += 'L'
+                    l_loc = value    
+            else:
+                answer += 'L'
+                l_loc = value
+        else: 
+            answer += 'R'
+            r_loc = value
+    
+    return answer
