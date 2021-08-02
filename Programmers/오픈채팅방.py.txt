@@ -17,4 +17,5 @@ def solution(record):
         elif history[0] == "Leave":
             answer.append(log_uid[history[1]]+"님이 나갔습니다.")
             
+            
     return answer
