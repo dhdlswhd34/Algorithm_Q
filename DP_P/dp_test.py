@@ -33,7 +33,7 @@ for i in range(int(r)):
     a, b, c, d, e = input().split()
     result.append([a, b, c, d, e])
 
-temp  = lambda x, y: result[x][y + 1]
+temp = lambda x, y: result[x][y + 1]
 print(result)
 print(temp(0,0))
 
